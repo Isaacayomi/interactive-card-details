@@ -1,51 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Interactive card details form</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="style.css" />
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+    <title>Frontend Mentor | Interactive card details form</title>
+  </head>
+  <body>
+    <main>
+      <section class="cards__section">
+        <div class="card__back">
+          <img
+            src="./images/bg-card-back.png"
+            alt="card-back"
+            class="card__2"
+          />
+          <p class="cvc__no">000</p>
+        </div>
+        <div class="card__front">
+          <img
+            src="./images/card-logo.svg"
+            alt="card__logo"
+            class="card__logo"
+          />
+          <img
+            src="./images/bg-card-front.png"
+            alt="card-front"
+            class="card__1"
+          />
+          <p class="card__no">0000 0000 0000 0000</p>
+          <div class="card__details">
+            <p class="card__name">JANE APPLESEED</p>
+            <p>
+              <span class="exp__month">00</span>/<span class="exp__year"
+                >00</span
+              >
+            </p>
+          </div>
+        </div>
+      </section>
 
-  0000 0000 0000 0000
-  Jane Appleseed
-  00/00
+      <section>
+        <form>
+          <label for="name">CARDHOLDER NAME</label>
+          <input
+            type="text"
+            name="holder__name"
+            class="holder__name"
+            placeholder="e.g. Jane Appleseed"
+          />
+          <p class="error__msg cardholdername__err">Can't be blank</p>
 
-  000
+          <label for="Number">CARD NUMBER</label>
+          <input
+            type="text"
+            name="card__number"
+            class="card__number"
+            placeholder="e.g. 1234 5678 9123 0000"
+          />
+          <p class="error__msg cardholdernumber__err">
+            Wrong format, numbers only
+          </p>
 
-  Cardholder Name
-  e.g. Jane Appleseed
+          <div class="exp__section">
+            <div>
+              <label for="date">EXP. DATE (MM/YY)</label>
+              <div class="dates">
+                <input
+                  type="text"
+                  name="card__month"
+                  class="card__month"
+                  placeholder="MM"
+                />
+                <p class="cardmonth__err error__msg">Can't be blank</p>
+                <input
+                  type="text"
+                  name="card__year"
+                  class="card__year"
+                  placeholder="YY"
+                />
+                <p class="cardyear__err error__msg">Can't be blank</p>
+              </div>
+            </div>
 
-  Card Number
-  e.g. 1234 5678 9123 0000
+            <div>
+              <label for="CVC">CVC</label>
+              <input
+                type="text"
+                class="cvc"
+                name="cvc"
+                placeholder="e.g. 123"
+              />
+              <p class="cvc__err error__msg">Can't be blank</p>
+            </div>
+          </div>
 
-  Exp. Date (MM/YY)
-  MM
-  YY
+          <button class="submit__btn">Confirm</button>
+        </form>
+      </section>
 
-  CVC
-  e.g. 123
+      <!-- Complete State -->
 
-  Confirm
-
-  <!-- Completed state start -->
-
-  Thank you!
-  We've added your card details
-  Continue
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+      <section class="success__page">
+        <img
+          src="./images/icon-complete.svg"
+          alt="success__icon"
+          class="success__icon"
+        />
+        <p>Thank You</p>
+        <p>We've added your card details</p>
+        <button class="proceed__btn">Continue</button>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
 </html>
