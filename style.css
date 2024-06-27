@@ -139,6 +139,7 @@ body {
   max-width: 20.4375rem;
   width: 100%;
   height: 2.8125rem;
+  padding-left: 1rem;
   margin-bottom: 1.25rem;
   border-radius: 0.5rem;
   border: 1px solid var(--Light-Grey, #dfdee0);
@@ -147,7 +148,6 @@ body {
 
 .form__section input::placeholder {
   font-family: "Space Grotesk", sans-serif;
-  padding-left: 1rem;
   padding-block: 0.69rem;
   color: var(--Deep-Violet, #21092f);
   font-feature-settings: "clig" off, "liga" off;
@@ -215,6 +215,10 @@ input.cvc {
   font-weight: 500;
   line-height: normal;
   display: none;
+}
+
+.form__section {
+  /* display: none; */
 }
 
 /* Complete State */
