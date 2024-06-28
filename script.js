@@ -23,7 +23,7 @@ const cvcErr = document.querySelector(".cvc__err");
 const submitBtn = document.querySelector(".submit__btn");
 const proceedBtn = document.querySelector(".proceed__btn");
 
-const emptyFields = function (inputEl, errorEl, errorMsg = "") {
+const emptyFields = function (displayEl, inputEl, errorEl, errorMsg = "") {
   if (inputEl.value.trim().length === 0) {
     errorEl.style.display = "block";
     errorEl.style.color = "red";
@@ -31,6 +31,7 @@ const emptyFields = function (inputEl, errorEl, errorMsg = "") {
   } else {
     errorEl.style.display = "none";
     inputEl.style.border = "1px solid #dfdee0";
+    displayEl.textContent = inputEl.value;
   }
 
   if (errorMsg) {
@@ -38,15 +39,35 @@ const emptyFields = function (inputEl, errorEl, errorMsg = "") {
   }
 };
 
-const validateFields = function () {
-  emptyFields(cardNameInput, cardHolderNameErr, "Cannot be blank");
-  emptyFields(cardNumberInput, cardHolderNumberErr, "Cannot be blank");
-  emptyFields(cardMonthInput, cardMonthErr, "Cannot be blank");
-  emptyFields(cardYearInput, cardYearErr, "Cannot be blank");
-  emptyFields(cvcInput, cvcErr, "Cannot be blank");
+const checkEmptyFields = function () {
+  emptyFields(
+    cardNameDisplay,
+    cardNameInput,
+    cardHolderNameErr,
+    "Cannot be blank"
+  );
+
+  emptyFields(expMonthDisplay, cardMonthInput, cardMonthErr, "Cannot be blank");
+  emptyFields(expYearDisplay, cardYearInput, cardYearErr, "Cannot be blank");
+  emptyFields(cvcDisplay, cvcInput, cvcErr, "Cannot be blank");
+
+  return;
+};
+
+const incompleteCardNo = function (displayEl, inputEl, errorEl) {
+  if (inputEl.value.trim().length < 15 || inputEl.value.trim().length > 16) {
+    errorEl.style.display = "block";
+    errorEl.style.color = "red";
+    inputEl.style.border = "1px solid red";
+  } else {
+    errorEl.style.display = "none";
+    inputEl.style.border = "1px solid gray";
+    displayEl.textContent = inputEl.value;
+  }
 };
 
 submitBtn.addEventListener("click", function (e) {
   e.preventDefault();
-  validateFields();
+  checkEmptyFields();
+  incompleteCardNo(cardNoDisplay, cardNumberInput, cardHolderNumberErr);
 });
