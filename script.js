@@ -23,6 +23,7 @@ const cvcErr = document.querySelector(".cvc__err");
 const submitBtn = document.querySelector(".submit__btn");
 const proceedBtn = document.querySelector(".proceed__btn");
 
+// Check Empty Fields
 const emptyFields = (displayEl, inputEl, errorEl, errorMsg = "") => {
   if (inputEl.value.trim().length === 0) {
     errorEl.style.display = "block";
@@ -54,12 +55,13 @@ const emptyInputFields = () => {
   return;
 };
 
+// Checks incorrect card number
 const incorrectCardDetails = (displayEl, inputEl, errorEl) => {
   if (inputEl.value.trim().length < 15 || inputEl.value.trim().length > 16) {
     errorEl.style.display = "block";
     errorEl.style.color = "red";
     inputEl.style.border = "1px solid red";
-  } else if (/[a-zA-Z]/.test(cardNumberInput.value)) {
+  } else if (/[^0-9a-zA-Z]/.test(cardNumberInput.value)) {
     cardHolderNumberErr.style.display = "block";
     cardHolderNumberErr.style.color = "red";
     cardNumberInput.style.border = "1px solid red";
