@@ -68,7 +68,6 @@ const incorrectCardDetails = (displayEl, inputEl, errorEl) => {
   } else {
     errorEl.style.display = "none";
     inputEl.style.border = "1px solid gray";
-    displayEl.textContent = inputEl.value;
   }
 };
 
