@@ -23,7 +23,7 @@ const cvcErr = document.querySelector(".cvc__err");
 const submitBtn = document.querySelector(".submit__btn");
 const proceedBtn = document.querySelector(".proceed__btn");
 
-const emptyFields = function (displayEl, inputEl, errorEl, errorMsg = "") {
+const emptyFields = (displayEl, inputEl, errorEl, errorMsg = "") => {
   if (inputEl.value.trim().length === 0) {
     errorEl.style.display = "block";
     errorEl.style.color = "red";
@@ -39,7 +39,7 @@ const emptyFields = function (displayEl, inputEl, errorEl, errorMsg = "") {
   }
 };
 
-const checkEmptyFields = function () {
+const emptyInputFields = () => {
   emptyFields(
     cardNameDisplay,
     cardNameInput,
@@ -54,7 +54,7 @@ const checkEmptyFields = function () {
   return;
 };
 
-const incompleteCardNo = function (displayEl, inputEl, errorEl) {
+const incompleteCardNo = (displayEl, inputEl, errorEl) => {
   if (inputEl.value.trim().length < 15 || inputEl.value.trim().length > 16) {
     errorEl.style.display = "block";
     errorEl.style.color = "red";
@@ -66,8 +66,15 @@ const incompleteCardNo = function (displayEl, inputEl, errorEl) {
   }
 };
 
+// const containsLetter = function () {
+//   if (typeof parseInt(cardNumberInput.value) === 'string') {
+//     console.log("Contains String");
+//   }
+// };
+
 submitBtn.addEventListener("click", function (e) {
   e.preventDefault();
-  checkEmptyFields();
+  emptyInputFields();
   incompleteCardNo(cardNoDisplay, cardNumberInput, cardHolderNumberErr);
+//   containsLetter();
 });
