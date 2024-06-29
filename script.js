@@ -54,11 +54,15 @@ const emptyInputFields = () => {
   return;
 };
 
-const incompleteCardNo = (displayEl, inputEl, errorEl) => {
+const incorrectCardDetails = (displayEl, inputEl, errorEl) => {
   if (inputEl.value.trim().length < 15 || inputEl.value.trim().length > 16) {
     errorEl.style.display = "block";
     errorEl.style.color = "red";
     inputEl.style.border = "1px solid red";
+  } else if (/[a-zA-Z]/.test(cardNumberInput.value)) {
+    cardHolderNumberErr.style.display = "block";
+    cardHolderNumberErr.style.color = "red";
+    cardNumberInput.style.border = "1px solid red";
   } else {
     errorEl.style.display = "none";
     inputEl.style.border = "1px solid gray";
@@ -66,15 +70,8 @@ const incompleteCardNo = (displayEl, inputEl, errorEl) => {
   }
 };
 
-// const containsLetter = function () {
-//   if (typeof parseInt(cardNumberInput.value) === 'string') {
-//     console.log("Contains String");
-//   }
-// };
-
 submitBtn.addEventListener("click", function (e) {
   e.preventDefault();
   emptyInputFields();
-  incompleteCardNo(cardNoDisplay, cardNumberInput, cardHolderNumberErr);
-//   containsLetter();
+  incorrectCardDetails(cardNoDisplay, cardNumberInput, cardHolderNumberErr);
 });
