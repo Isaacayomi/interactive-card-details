@@ -7,7 +7,7 @@
 
 body {
   font-family: "Space Grotesk", sans-serif;
-  overflow-x:hidden;
+  overflow-x: hidden;
 }
 
 .cards__section {
@@ -219,13 +219,16 @@ input.cvc {
   display: none;
 }
 
-.form__section {
-  /* display: none; */
+.form__display {
+  display: none;
 }
 
 /* Complete State */
 .success__page {
   padding-top: 5.69rem;
+}
+
+.success__page__display {
   display: none;
 }
 
