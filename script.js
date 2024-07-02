@@ -60,20 +60,34 @@ const emptyInputFields = () => {
   return;
 };
 
-// Checks incorrect card number
-const incorrectCardDetails = (displayEl, inputEl, errorEl) => {
-  if (inputEl.value.trim().length < 15 || inputEl.value.trim().length > 16) {
+const incompleteDigits = function (inputEl, errorEl) {
+  if (inputEl.value.trim().length < 16) {
     errorEl.style.display = "block";
     errorEl.style.color = "red";
     inputEl.style.border = "1px solid red";
-  } else if (/[^0-9a-zA-Z]/.test(cardNumberInput.value)) {
-    cardHolderNumberErr.style.display = "block";
-    cardHolderNumberErr.style.color = "red";
-    cardNumberInput.style.border = "1px solid red";
-  } else {
+    errorEl.textContent = "Cannot be less than 16 digits";
+  }
+};
+
+// Checks incorrect card details
+const incorrectCardDetails = (displayEl, inputEl, errorEl, errorMsg = " ") => {
+  if (inputEl.value.trim().length === 0) {
+    // Empty field
+    errorEl.style.display = "block";
+    errorEl.style.color = "red";
+    inputEl.style.border = "1px solid red";
+    errorEl.textContent = "Cannot be blank";
+  } else if (/^\d+$/.test(inputEl.value)) {
+    // Valid format (only numbers)
     errorEl.style.display = "none";
     inputEl.style.border = "1px solid gray";
-    cardNoDisplay.textContent = cardNumberInput.value;
+    displayEl.textContent = inputEl.value;
+  } else {
+    // Wrong format (not only numbers)
+    errorEl.style.display = "block";
+    errorEl.style.color = "red";
+    inputEl.style.border = "1px solid red";
+    errorEl.textContent = "Numbers only";
   }
 };
 
@@ -81,6 +95,10 @@ const incorrectCardDetails = (displayEl, inputEl, errorEl) => {
 const submitDetails = () => {
   emptyInputFields();
   incorrectCardDetails(cardNoDisplay, cardNumberInput, cardHolderNumberErr);
+  incompleteDigits(cardNumberInput, cardHolderNumberErr);
+  incorrectCardDetails(cvcDisplay, cvcInput, cvcErr);
+  incorrectCardDetails(expMonthDisplay, cardMonthInput, cardMonthErr);
+  incorrectCardDetails(expYearDisplay, cardYearInput, cardYearErr);
 };
 
 // Display Success Page
@@ -108,6 +126,7 @@ const backToForm = () => {
   for (let i = 0; i < inputs.length; i++) {
     // Clear input fields
     inputs[i].value = " ";
+    inputs[i].placeholder = inputs[i].getAttribute("placeholder");
   }
 };
 
