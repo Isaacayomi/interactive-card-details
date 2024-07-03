@@ -3,10 +3,10 @@
   margin: 0;
   box-sizing: border-box;
   text-decoration: none;
+  font-family: "Space Grotesk", sans-serif;
 }
 
 body {
-  font-family: "Space Grotesk", sans-serif;
   overflow-x: hidden;
 }
 
@@ -154,7 +154,7 @@ body {
   color: var(--Deep-Violet, #21092f);
   font-feature-settings: "clig" off, "liga" off;
   font-family: "Space Grotesk";
-  font-size: 1.125rem;
+  /* font-size: 1.125rem; */
   font-style: normal;
   font-weight: 500;
   line-height: normal;

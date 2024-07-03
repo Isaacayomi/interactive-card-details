@@ -77,11 +77,6 @@ const incorrectCardDetails = (displayEl, inputEl, errorEl, errorMsg = " ") => {
     errorEl.style.color = "red";
     inputEl.style.border = "1px solid red";
     errorEl.textContent = "Cannot be blank";
-  } else if (/^\d+$/.test(inputEl.value)) {
-    // Valid format (only numbers)
-    errorEl.style.display = "none";
-    inputEl.style.border = "1px solid gray";
-    displayEl.textContent = inputEl.value;
   } else {
     // Wrong format (not only numbers)
     errorEl.style.display = "block";
@@ -89,6 +84,14 @@ const incorrectCardDetails = (displayEl, inputEl, errorEl, errorMsg = " ") => {
     inputEl.style.border = "1px solid red";
     errorEl.textContent = "Numbers only";
   }
+
+  if (/^\d+$/.test(inputEl.value)) {
+    // Valid format (only numbers)
+    errorEl.style.display = "none";
+    inputEl.style.border = "1px solid gray";
+    displayEl.textContent = inputEl.value;
+  }
+
 };
 
 // Submit Details
@@ -128,6 +131,11 @@ const backToForm = () => {
     inputs[i].value = " ";
     inputs[i].placeholder = inputs[i].getAttribute("placeholder");
   }
+  cardNameDisplay.textContent = "Jane Appleseed";
+  cardNoDisplay.textContent = "0000 0000 0000 0000";
+  cvcDisplay.textContent = "000";
+  expYearDisplay.textContent = "00";
+  expMonthDisplay.textContent = "00";
 };
 
 // Submit form
