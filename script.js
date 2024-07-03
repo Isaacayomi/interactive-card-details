@@ -91,7 +91,6 @@ const incorrectCardDetails = (displayEl, inputEl, errorEl, errorMsg = " ") => {
     inputEl.style.border = "1px solid gray";
     displayEl.textContent = inputEl.value;
   }
-
 };
 
 // Submit Details
@@ -121,21 +120,29 @@ const showSuccess = () => {
 };
 
 // Back to form section
+
 const backToForm = () => {
   if (form.classList.contains("form__display")) {
     form.classList.remove("form__display");
     successPage.classList.add("success__page__display");
+
+    // Clear input fields (except card number if valid)
+    for (let i = 0; i < inputs.length; i++) {
+      inputs[i].value = "";
+      inputs[i].placeholder = inputs[i].getAttribute("placeholder");
+    }
+
+    // Reset error messages and styles
+    for (const error of errorMsg) {
+      error.style.display = "none";
+    }
+
+    cardNameDisplay.textContent = "Jane Appleseed";
+    cvcDisplay.textContent = "000";
+    expYearDisplay.textContent = "00";
+    expMonthDisplay.textContent = "00";
+    cardNoDisplay.textContent = "0000 0000 0000 0000";
   }
-  for (let i = 0; i < inputs.length; i++) {
-    // Clear input fields
-    inputs[i].value = " ";
-    inputs[i].placeholder = inputs[i].getAttribute("placeholder");
-  }
-  cardNameDisplay.textContent = "Jane Appleseed";
-  cardNoDisplay.textContent = "0000 0000 0000 0000";
-  cvcDisplay.textContent = "000";
-  expYearDisplay.textContent = "00";
-  expMonthDisplay.textContent = "00";
 };
 
 // Submit form
